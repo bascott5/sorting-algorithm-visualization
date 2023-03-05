@@ -1,0 +1,5 @@
+.bars {
+  fill: black;
+  float: left;
+  transform: scaleY(-1);
+}
