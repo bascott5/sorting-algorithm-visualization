@@ -1,4 +1,45 @@
 import { Inter } from 'next/font/google'
+import React, { useState, useEffect } from 'react'
+
+const inter = Inter({ subsets: ['latin'] })
+
+const SortingAlgorithm: React.FC = () => {
+  const [arr, setArr] = useState<number[]>([3, 1, 2, 5, 4]);
+  const oneSecond: number = 1000;
+
+  useEffect(() => {
+    let n: number = 0;
+    let i: number = 0;
+    let j: number = 0;
+    
+    if (n < arr.length) {
+      const interval = setInterval(() => {
+        n++;
+        if (i < arr.length) {
+          setInterval(() => {
+            i++;
+            if (j < arr.length) {
+              setInterval(() => {
+                j++;
+              }, oneSecond)
+            }
+          }, oneSecond);
+        }
+        return arr.map<JSX.Element>((keys) => (
+          <div>
+            <svg className='bars'>
+              <rect height={keys * 25} width={50} x={0} y={0}/>
+            </svg>
+          </div>
+        ))
+      }, oneSecond);
+    }
+  });
+}
+
+export default SortingAlgorithm;
+
+/*import { Inter } from 'next/font/google'
 import { useState, useEffect } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -33,9 +74,9 @@ const SortingAlgorithm: React.FC = () => {
     }, 1000);
 
     if (arr == sortedArr) {
-      return() => clearInterval(interval);
+      clearInterval(interval);
     }
   }, [])
 }
 
-export default SortingAlgorithm;
+export default SortingAlgorithm;*/
