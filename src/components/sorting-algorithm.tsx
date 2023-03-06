@@ -4,30 +4,7 @@ import React, { useState, useEffect } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 const SortingAlgorithm: React.FC = () => {
-  const [arr, setArr] = useState<number[]>([3, 1, 2, 5, 4]);
-  const oneSecond: number = 1000;
-
-  useEffect(() => {
-    let n: number = 0;
-    let i: number = 0;
-    let j: number = i + 1;
-    
-    if (n < arr.length) {
-      const interval = setInterval(() => {
-      n++;
-        if (i < arr.length) {
-          setInterval(() => {
-            i++;
-            let minIndex: number = i;
-            if (j < arr.length) {
-              setInterval(() => {
-                j++;
-              }, oneSecond)
-            }
-          }, oneSecond);
-        }
-      }, oneSecond);
-    }
+  const mappedArr = () => {
     return arr.map<JSX.Element>((keys) => (
       <div>
         <svg className='bars'>
@@ -35,6 +12,40 @@ const SortingAlgorithm: React.FC = () => {
         </svg>
       </div>
     ))
+  }
+  
+  const [arr, setArr] = useState<number[]>([3, 1, 2, 5, 4]);
+  const oneSecond: number = 1000;
+
+  useEffect(() => {
+    let n: number = 0;
+    let i: number = 0;
+    let j: number = i + 1;
+    let minIndex: number = i;
+    
+    if (n < arr.length) {
+      setInterval(() => {
+      n++;
+        if (i < arr.length) {
+          setInterval(() => {
+            i++;
+            minIndex = i;
+            if (j < arr.length) {
+              setInterval(() => {
+                j++;
+                if (arr[j] < arr[minIndex]) {
+                  minIndex = j;
+                }
+              }, oneSecond)
+            }
+          }, oneSecond);
+        }
+        let temp: number = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+      }, oneSecond);
+    }
+    mappedArr();
   }, []);
 }
 
@@ -68,6 +79,7 @@ const SortingAlgorithm: React.FC = () => {
           </svg>
         </div>
       )
+    }
 }
 
 export default SortingAlgorithm;*/
