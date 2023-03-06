@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 const App: React.FC = () => {
   return(
     <div className='headerContainer'>
-      <h1 style={{color:'black'}}>🆂🅾🆁🆃🅸🅽🅶 🅰🅻🅶🅾🆁🅸🆃🅷🅼 🆅🅸🆂🆄🅰🅻🅸🆉🅴🆁</h1>
+      <h1 className='header'>🆂🅾🆁🆃🅸🅽🅶 🅰🅻🅶🅾🆁🅸🆃🅷🅼 🆅🅸🆂🆄🅰🅻🅸🆉🅴🆁</h1>
       <SortingAlgorithm />
     </div>
   )

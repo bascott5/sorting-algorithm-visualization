@@ -8,12 +8,20 @@ main {
   display: block;
 }
 
+.header {
+  color: black;
+  display: block;
+  inline-size: 0vh;
+}
+
 .barsContainer {
+  background-color: grey;
   display: block;
 }
 
 .bars {
   fill: black;
-  float: left;
+  display: block;
+  position: fixed;
   transform: scaleY(-1);
 }

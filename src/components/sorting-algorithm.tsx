@@ -21,6 +21,8 @@ const SortingAlgorithm: React.FC = () => {
         let temp: number = arr[i];
         arr[i] = arr[minIndex];
         arr[minIndex] = temp;
+        
+        //document.getElementById('bars')
         }, 1000);
       }
     }, []);
@@ -28,8 +30,8 @@ const SortingAlgorithm: React.FC = () => {
   
   return arr.map<JSX.Element>((keys) => (
     <div className='barsContainer'>
-      <svg className='bars'>
-        <rect height={keys * 25} width={100 - (arr.length * 10)} x={0} y={0}/>
+      <svg id='bars' className='bars'>
+        <rect height={keys * 25} width={100 - (arr.length * 10)} x={arr.indexOf(keys) * 53} y={0}/>
       </svg>
     </div>
   ))
