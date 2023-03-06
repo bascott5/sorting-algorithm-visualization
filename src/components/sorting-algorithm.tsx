@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 const SortingAlgorithm: React.FC = () => {
-  //TODO: Find a way to make each loop run after every second
+  //TODO: Find a way to make each loop run after every second (try getting the element by its id to transform it within the timeout?)
   const [arr, setArr] = useState<number[]>([3, 1, 2, 5, 4]);
 
   //Selection sort
@@ -27,7 +27,7 @@ const SortingAlgorithm: React.FC = () => {
   }
   
   return arr.map<JSX.Element>((keys) => (
-    <div>
+    <div className='barsContainer'>
       <svg className='bars'>
         <rect height={keys * 25} width={100 - (arr.length * 10)} x={0} y={0}/>
       </svg>
