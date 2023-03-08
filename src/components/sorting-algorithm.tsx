@@ -7,42 +7,24 @@ const SortingAlgorithm: React.FC = () => {
 
   //Selection sort
   useEffect(() => {
-    for (let i = 0; i < arr.length; i++) {
-      setTimeout(() => {
-      let minIndex: number = i;
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[j] < arr[minIndex]) {
-          minIndex = j;
-        }
-      }
-      let temp: number = arr[i];
-      arr[i] = arr[minIndex];
-      arr[minIndex] = temp;
-      }, 1000);
-    }
-    
-    console.log(arr);
-  }, [arr])
-
-  /*while (arr != arr.sort()) {
-    useEffect(() => {
-      for (let i = 0; i < arr.length; i++) {
-        const loop = setTimeout(() => {
+    while (arrCopy != arrCopy.sort()){
+      for (let i = 0; i < arrCopy.length; i++) {
+        setTimeout(() => {
         let minIndex: number = i;
-        for (let j = i + 1; j < arr.length; j++) {
-          if (arr[j] < arr[minIndex]) {
+        for (let j = i + 1; j < arrCopy.length; j++) {
+          if (arrCopy[j] < arrCopy[minIndex]) {
             minIndex = j;
           }
         }
-        let temp: number = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
+        let temp: number = arrCopy[i];
+        arrCopy[i] = arrCopy[minIndex];
+        arrCopy[minIndex] = temp;
         }, 1000);
       }
-    }, []);
-  }*/
-
-
+    }
+    setArr([...arrCopy])
+    console.log(arrCopy);
+  }, []);
   
   return arr.map<JSX.Element>((keys) => 
     <div className='bars'>
