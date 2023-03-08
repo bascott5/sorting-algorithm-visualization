@@ -1,22 +1,17 @@
-.headerContainer {
+.container {
   display: grid;
-  grid-template-columns: 50%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas: "header" "bars";
 }
 
 .header {
   color: black;
-  display: block;
   inline-size: 0vh;
-}
-
-.barsContainer {
-  background-color: grey;
-  display: block;
 }
 
 .bars {
   fill: black;
-  display: block;
+  right: 23%;
   position: fixed;
   transform: scaleY(-1);
 }
