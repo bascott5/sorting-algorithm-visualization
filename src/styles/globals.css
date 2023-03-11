@@ -1,7 +1,18 @@
 body {
-  display: grid;
-  grid-template-rows: 50% 50%;
-  grid-template-areas: "leftSide" "rightSide";
+  background-color: grey;
+}
+
+.list {
+  display: flex;
+  float: left;
+}
+
+.headerContainer {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .header {
@@ -11,7 +22,7 @@ body {
 
 .bars {
   fill: black;
-  right: 15%;
   position: fixed;
   transform: scaleY(-1);
+  bottom: 0;
 }

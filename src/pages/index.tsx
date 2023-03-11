@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ControlPanel from '@/components/control-panel';
 import SortingAlgorithm from '@/components/sorting-algorithm'
+import Visualizer from '@/components/visualizer';
 
 const App: React.FC = () => {
   //TODO: refactor code so that useReducer is used for the array rather than useState

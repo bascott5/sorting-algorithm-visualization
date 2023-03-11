@@ -1,20 +1,25 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useContext, useEffect } from "react";
+
+//- - create global context for array and move use reducer to index while keeping the buttons here
+//- - hook up visualizer to array global context
+//- - create two seperate sides of the screen
+
+type action =
+    | { type: "reset" }
+    | { type: "selection sort" }
 
 const ControlPanel: React.FC = () => {
-    const arrReducer = (arr: number[], action: any) => {
+    const arrReducer = (arr: number[], action: action) => {
         switch (action.type) {
             case "reset":
-                useEffect(() => {
-                    for (let i = 0; i <= 5; i++) {
-                        let arrCopy: number[] = [...arr];
-                        arrCopy.unshift(Math.floor(Math.random() * 5) + 1);
-                        arrCopy.pop();
+                for (let i = 0; i < 5; i++) {
+                    arr.pop();
+                    arr.unshift(Math.floor(Math.random() * 5) + 1);
+                    
+                    return [...arr.slice()];
+                }
 
-                        return arr = [...arrCopy];
-                    }
-                }, []);
-
-            case "bubble sort":
+            /*case "bubble sort":
                 useEffect(() => {
                     for (let i = 0; i < arr.length; i++) {
                       setTimeout(() => {
@@ -78,24 +83,23 @@ const ControlPanel: React.FC = () => {
                             return [...left, pivot, ...right];
                         }, 100 * (i + 1));
                     }
-                }, []);
+                }, []);*/
 
             case "selection sort":
                 useEffect(() => {
                     for (let i = 0; i < arr.length; i++) {
                         setTimeout(() => {
-                            let arrCopy: number[] = [...arr];
                             let minIndex = i;
                             for (let j = i + 1; j < arr.length; j++) {
-                                if (arrCopy[j] < arrCopy[minIndex]) {
+                                if (arr[j] < arr[minIndex]) {
                                     minIndex = j;
                                 }
                             }
                             if (minIndex !== i) {
-                                [arrCopy[i], arrCopy[minIndex]] = [arrCopy[minIndex], arrCopy[i]];
+                                [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
                             }
             
-                            return arr = [...arrCopy];
+                            return [...arr.slice()];
                         }, 100 * (i + 1));
                     }
                 }, []);
@@ -104,21 +108,27 @@ const ControlPanel: React.FC = () => {
     
     const [arr, dispatch] = useReducer<any>(arrReducer, [])
     return(
-      <div className='header'>
-        <h1>🆂🅾🆁🆃🅸🅽🅶 🅰🅻🅶🅾🆁🅸🆃🅷🅼 🆅🅸🆂🆄🅰🅻🅸🆉🅴🆁</h1>
-        <button>Selection Algorithm</button>
-        <button onClick={() => dispatch("reset")}>Reset</button>
+      <div className='headerContainer'>
+        <h1 className='header'>🆂🅾🆁🆃🅸🅽🅶 🅰🅻🅶🅾🆁🅸🆃🅷🅼 🆅🅸🆂🆄🅰🅻🅸🆉🅴🆁</h1>
+        <li className='list'>
+            <ul><button>Bubble Sort</button></ul>
+            <ul><button>Insertion Sort</button></ul>
+            <ul><button>Merge Sort</button></ul>
+            <ul><button>Quick Sort</button></ul>
+            <ul><button>Selection Sort</button></ul>
+            <ul><button onClick={() => dispatch("reset")}>Reset</button></ul>
+        </li>
       </div>
     )
   }
   
   export default ControlPanel;
 
-  function merge(left: any, right: any) {
+  /*function merge(left: any, right: any) {
     let arrCopy = [];
     while (left.length && right.length) {
         if (left[0] < right[0]) {
             arrCopy.push(left.shift())
         }
     }
-}
+    }*/

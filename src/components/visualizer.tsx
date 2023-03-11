@@ -7,9 +7,9 @@ interface props {
 
 const Visualizer: React.FC<props> = ({arr, setArr}): any => {
     return arr.map<JSX.Element>((keys) => 
-    <div className='bars'>
-      <svg key={keys.toString()}>
-        <rect height={keys * 25} width={100 - (arr.length * 10)} x={arr.indexOf(keys) * 53} y={0}/>
+    <div>
+      <svg className='bars' key={keys.toString()} viewBox={"0 0 500 500"}>
+        <rect height={keys * 25} width={50} x={arr.indexOf(keys) * 53} y={0}/>
       </svg>
     </div>
   )
