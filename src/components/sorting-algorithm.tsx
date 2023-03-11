@@ -22,7 +22,7 @@ const SortingAlgorithm: React.FC<props> = ({arr, setArr}): JSX.Element => {
         let temp: number = arrCopy[i];
         arrCopy[i] = arrCopy[minIndex];
         arrCopy[minIndex] = temp;
-
+        
         return arrCopy;
         })
       }, 100 * (i + 1));

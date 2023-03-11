@@ -1,7 +1,23 @@
-.container {
+body {
   display: grid;
   grid-template-rows: 50% 50%;
-  grid-template-areas: "header" "bars";
+  grid-template-areas: "leftSide" "rightSide";
+}
+
+leftSide {
+  background-color: white;
+  position: fixed;
+  height: 100%;
+  width: 50%;
+  left: 0;
+}
+
+#rightSide {
+  background-color: lightgrey;
+  position: fixed;
+  height: 100%;
+  width: 50%;
+  right: 0;
 }
 
 .header {
@@ -11,7 +27,7 @@
 
 .bars {
   fill: black;
-  right: 23%;
+  right: 15%;
   position: fixed;
   transform: scaleY(-1);
 }
