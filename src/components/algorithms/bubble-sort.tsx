@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import Visualizer from "../visualizer";
 
-const BubbleSort: React.FC = () => {
+const BubbleSort = () => {
     useEffect(() => {
         for (let i = 0; i < arr.length; i++) {
           setTimeout(() => {
@@ -18,6 +19,6 @@ const BubbleSort: React.FC = () => {
           }, 100 * (i + 1));
         }
     }, []);
-}
 
-export default BubbleSort;
+    return <Visualizer />
+}

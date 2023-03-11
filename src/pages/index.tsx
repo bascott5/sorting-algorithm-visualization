@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Header from '@/components/header';
+import ControlPanel from '@/components/control-panel';
 import SortingAlgorithm from '@/components/sorting-algorithm'
 
 const App: React.FC = () => {
@@ -19,7 +19,7 @@ const App: React.FC = () => {
 
   return(
     <div className='container'>
-      <Header />
+      <ControlPanel />
       <SortingAlgorithm arr={arr} setArr={setArr} />
     </div>
   )

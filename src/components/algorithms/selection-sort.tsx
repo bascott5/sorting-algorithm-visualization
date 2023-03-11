@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import Visualizer from "../visualizer";
 
-const SelectionSort: React.FC = () => {
+const SelectionSort = () => {
     useEffect(() => {
         for (let i = 0; i < arr.length; i++) {
           setTimeout(() => {
@@ -21,6 +22,6 @@ const SelectionSort: React.FC = () => {
           }, 100 * (i + 1));
         }
     }, []);
-}
 
-export default SelectionSort;
+    return <Visualizer />
+}

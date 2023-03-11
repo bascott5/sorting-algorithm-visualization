@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import Visualizer from "../visualizer";
 
-const MergeSort: React.FC = () => {
+const MergeSort = () => {
     useEffect(() => {
         for (let i = 0; i < arr.length; i++) {
           setTimeout(() => {
@@ -17,9 +18,9 @@ const MergeSort: React.FC = () => {
           }, 100 * (i + 1));
         }
     }, []);
-}
 
-export default MergeSort;
+    return <Visualizer />
+}
 
 function merge(left: any, right: any) {
     let arrCopy = [];

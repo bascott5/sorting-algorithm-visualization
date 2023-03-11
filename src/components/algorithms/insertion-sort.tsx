@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const InsertionSort: React.FC = () => {
+const InsertionSort = () => {
     useEffect(() => {
         for (let i = 1; i < arr.length; i++) {
           setTimeout(() => {
@@ -19,6 +19,6 @@ const InsertionSort: React.FC = () => {
           }, 100 * (i + 1));
         }
     }, []);
-}
 
-export default InsertionSort;
+    return <Visualizer />
+}

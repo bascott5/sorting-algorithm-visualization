@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import Visualizer from "../visualizer";
 
-const QuickSort: React.FC = () => {
+const QuickSort = () => {
     useEffect(() => {
         for (let i = 0; i < arr.length; i++) {
           setTimeout(() => {
@@ -16,6 +17,6 @@ const QuickSort: React.FC = () => {
           }, 100 * (i + 1));
         }
     }, []);
-}
 
-export default QuickSort;
+    return <Visualizer />
+}

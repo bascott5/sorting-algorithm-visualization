@@ -4,22 +4,6 @@ body {
   grid-template-areas: "leftSide" "rightSide";
 }
 
-leftSide {
-  background-color: white;
-  position: fixed;
-  height: 100%;
-  width: 50%;
-  left: 0;
-}
-
-#rightSide {
-  background-color: lightgrey;
-  position: fixed;
-  height: 100%;
-  width: 50%;
-  right: 0;
-}
-
 .header {
   color: black;
   inline-size: 0vh;
