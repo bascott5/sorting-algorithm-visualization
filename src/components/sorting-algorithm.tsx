@@ -26,7 +26,7 @@ const SortingAlgorithm: React.FC<props> = ({arr, setArr}): JSX.Element => {
         return arrCopy;
         })
 
-        //document.querySelectorAll('.bars')[i].style.fill = 'grey';
+        //document.querySelectorAll('.bars')[i].style.fill = 'white';
       }, 100 * i);
     }
   }, []);

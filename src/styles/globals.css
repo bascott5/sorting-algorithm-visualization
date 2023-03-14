@@ -3,8 +3,23 @@ body {
 }
 
 .list {
-  display: flex;
-  float: left;
+  display: inline-flex;
+  padding-top: 7vh;
+  float: right;
+  padding-right: 50px;
+}
+
+.button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 1px;
+  border-radius: 12px;
 }
 
 .headerContainer {
@@ -18,6 +33,7 @@ body {
 .header {
   color: black;
   inline-size: 0vh;
+  display: inline-block;
 }
 
 .bars {
