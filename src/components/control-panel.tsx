@@ -1,7 +1,9 @@
-import { useReducer, useContext, useEffect } from "react";
+import React, { useContext } from 'react'
+import { arrContext, Action } from './arr-context-provider';
 
 const ControlPanel: React.FC = () => {
-    return(
+  const [arr, dispatch] = useContext<[number[], React.Dispatch<Action>]>(arrContext);
+    return (
       <div className='headerContainer'>
         <h1 className='header'>🆂🅾🆁🆃🅸🅽🅶 🅰🅻🅶🅾🆁🅸🆃🅷🅼 🆅🅸🆂🆄🅰🅻🅸🆉🅴🆁</h1>
         <li className='list'>
@@ -17,12 +19,3 @@ const ControlPanel: React.FC = () => {
   }
   
   export default ControlPanel;
-
-  /*function merge(left: any, right: any) {
-    let arrCopy = [];
-    while (left.length && right.length) {
-        if (left[0] < right[0]) {
-            arrCopy.push(left.shift())
-        }
-    }
-    }*/

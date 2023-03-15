@@ -1,11 +1,8 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { useContext } from 'react'
+import { arrContext, Action } from './arr-context-provider';
 
-interface props {
-    arr: number[],
-    setArr?: Dispatch<SetStateAction<number[]>>
-}
-
-const Visualizer: React.FC<props> = ({arr, setArr}): any => {
+const Visualizer: React.FC = () => {
+  const [arr, dispatch] = useContext<[number[], React.Dispatch<Action>]>(arrContext);
     return arr.map<JSX.Element>((keys) => 
     <div>
       <svg className='bars' key={keys.toString()} viewBox={"0 0 500 500"}>
