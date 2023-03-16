@@ -22,6 +22,10 @@ body {
   border-radius: 12px;
 }
 
+.button:hover {
+  background-color: grey;
+}
+
 .headerContainer {
   background-color: white;
   position: fixed;
