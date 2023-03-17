@@ -4,8 +4,8 @@ body {
 
 .list {
   display: inline-flex;
-  padding-top: 7vh;
   float: right;
+  padding-top: 7vh;
   padding-right: 50px;
 }
 
@@ -28,7 +28,7 @@ body {
 
 .headerContainer {
   background-color: white;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -44,6 +44,7 @@ body {
   fill: black;
   position: fixed;
   transform: scaleY(-1);
+  z-index: -1;
   bottom: 0;
   left: 2;
   right: 2;
