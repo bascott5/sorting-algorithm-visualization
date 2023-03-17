@@ -22,7 +22,7 @@ body {
   border-radius: 12px;
 }
 
-.button:hover {
+.button:active {
   background-color: grey;
 }
 

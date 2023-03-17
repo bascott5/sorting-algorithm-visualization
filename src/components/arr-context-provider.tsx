@@ -12,10 +12,14 @@ export type Action =
     | { type: "selection sort" }
     | { type: "randomize" } 
 
-const initArr: number[] = [3, 4, 2, 6, 8, 10, 5, 7, 9, 1];
+const initArr: number[] = [];
 export const arrContext = createContext<[number[], React.Dispatch<Action>]>([initArr, () => initArr]);
 
 const ArrContextProvider: React.FC<ArrayContextProps> = ({ children }: ArrayContextProps) => {
+  useEffect(() => {
+    dispatch({ type: "randomize" });
+  }, []);
+
   const arrReducer = (arr: number[], action: Action) => {
     switch (action.type) {
         case "bubble sort":
