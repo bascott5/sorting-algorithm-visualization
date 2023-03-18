@@ -23,12 +23,52 @@ const ArrContextProvider: React.FC<ArrayContextProps> = ({ children }: ArrayCont
   const arrReducer = (arr: number[], action: Action) => {
     switch (action.type) {
         case "bubble sort":
+          for (let i = 0; i < arr.length; i++) {
+            setTimeout(() => {
+              for (let j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                  let temp = arr[j];
+                  arr[j] = arr[j + 1];
+                  arr[j + 1] = temp;
+                }
+              }
+              return [...arr.slice()];
+            }, 100 * (i));
+          }
 
         case "insertion sort":
+          for (let i = 1; i < arr.length; i++) {
+            setTimeout(() => {
+              let current = arr[i];
+              let j = i - 1;
+              while (j > -1 && current < arr[j]) {
+                arr[j + 1] = arr[j];
+                j--;
+              }
+              arr[j + 1] = current;
+              return [...arr.slice()];
+            }, 100 * (i));
+          }
 
         case "merge sort":
+          for (let i = 0; i < arr.length; i++) {
+            setTimeout(() => {
+              for (let j = 0; j < arr.length; j++) {
+                
+              }
+
+            }, 100 * (i));
+          }
 
         case "quick sort":
+          for (let i = 0; i < arr.length; i++) {
+            setTimeout(() => {
+              for (let j = 0; j < arr.length; j++) {
+                
+              }
+
+            }, 100 * (i));
+          }
 
         case "selection sort":
           console.log("selection sort!");
