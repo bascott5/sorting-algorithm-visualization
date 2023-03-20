@@ -25,3 +25,5 @@ const SelectionSort = () => {
 
     return <Visualizer />
 }
+
+export default SelectionSort;

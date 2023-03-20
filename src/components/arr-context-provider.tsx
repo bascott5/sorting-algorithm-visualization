@@ -1,3 +1,4 @@
+//TODO: make state an object instead with an array in it, as well as include a string that can dispatch and call different sorting algorithms based off a swich case in a use effect hook
 import { createContext, useReducer, useEffect, useRef } from "react";
 
 export interface ArrayContextProps {
@@ -16,10 +17,6 @@ const initArr: number[] = [];
 export const arrContext = createContext<[number[], React.Dispatch<Action>]>([initArr, () => initArr]);
 
 const ArrContextProvider: React.FC<ArrayContextProps> = ({ children }: ArrayContextProps) => {
-  useEffect(() => {
-    dispatch({ type: "randomize" });
-  }, []);
-
   const arrReducer = (arr: number[], action: Action) => {
     switch (action.type) {
         case "bubble sort":
@@ -103,11 +100,18 @@ const ArrContextProvider: React.FC<ArrayContextProps> = ({ children }: ArrayCont
           return [...arr.slice()];
         
         default:
-            return [...arr.slice()];
+          return [...arr.slice()];
     }
-  };
+  }
 
   const [arr, dispatch] = useReducer<(arr: number[], action: Action) => number[]>(arrReducer, initArr);
+  useEffect(() => {
+    dispatch({ type: "randomize" });
+  }, []);
+  useEffect(() => {
+
+  }, [arr]);
+
   return (
     <arrContext.Provider value={[arr, dispatch]}>
       {children}
