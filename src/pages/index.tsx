@@ -7,7 +7,7 @@ import Visualizer from '@/components/visualizer';
 const App: React.FC = () => {
     return ( 
         <ArrContextProvider>
-            <div className='container'>
+            <div>
                 <ControlPanel />
                 <Visualizer />
             </div>
