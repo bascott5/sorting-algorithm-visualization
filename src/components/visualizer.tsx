@@ -3,7 +3,7 @@ import { arrContext } from "./arr-context-provider";
 
 
 const Visualizer: React.FC = () => {
-  const [arr, setArr] = useContext<[number[], React.Dispatch<SetStateAction<number[]>>]>(arrContext);
+  const [arr] = useContext<[number[], React.Dispatch<SetStateAction<number[]>>]>(arrContext);
 
     return arr.map<JSX.Element>((keys) => 
     <div>

@@ -1,23 +1,22 @@
 import { useEffect } from "react";
 
-export const SelectionSort = ({arr}) => {
+export const SelectionSort = (arr: number[]) => {
+    console.log("selection algorithm");
+
     useEffect(() => {
         for (let i = 0; i < arr.length; i++) {
           setTimeout(() => {
-            setArr(arr => {
-                let arrCopy: number[] = [...arr];
                 let minIndex = i;
                 for (let j = i + 1; j < arr.length; j++) {
-                    if (arrCopy[j] < arrCopy[minIndex]) {
+                    if (arr[j] < arr[minIndex]) {
                         minIndex = j;
                     }
                 }
                 if (minIndex !== i) {
-                    [arrCopy[i], arrCopy[minIndex]] = [arrCopy[minIndex], arrCopy[i]];
+                    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
                 }
 
-                return arrCopy;
-            })
+                return [...arr.slice()];
           }, 100 * (i + 1));
         }
     }, []);

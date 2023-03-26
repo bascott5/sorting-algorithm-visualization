@@ -1,6 +1,6 @@
 import { createContext, useState, SetStateAction } from "react";
 
-/*export*/ interface ArrayContextProps {
+interface ArrayContextProps {
   children: React.ReactElement;
 }
 
