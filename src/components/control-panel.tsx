@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
-import { useContext } from 'react';
+//TODO: Make i an exported variable then transfer it to the algorithms so it can be used for all? Make stack overflow post asking about this
+import React, { useState, useEffect } from 'react';
 import { SelectionSort } from './algorithms/selection-sort';
 import { Randomize } from './randomize';
-import { arrContext } from './arr-context-provider';
 
 const ControlPanel: React.FC = () => {
-  const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
+  const [algorithm, setAlgorithm] = useState("");
 
   useEffect(() => {
-    console.log("arr changed");
-  }, [arr]);
+    switch(algorithm) {
+      case "selection sort":
+        SelectionSort();
+      default:
+        Randomize();
+    }
+  }, [algorithm]);
 
   return (
     <div className='headerContainer'>
@@ -19,8 +23,8 @@ const ControlPanel: React.FC = () => {
         <ul><button className='button'>Insertion Sort</button></ul>
         <ul><button className='button'>Merge Sort</button></ul>
         <ul><button className='button'>Quick Sort</button></ul>
-        <ul><button className='button' onClick={() => setArr(SelectionSort)}>Selection Sort</button></ul>
-        <ul><button className='button' onClick={() => setArr(Randomize)}>Randomize</button></ul>
+        <ul><button className='button' onClick={() => setAlgorithm("selection sort")}>Selection Sort</button></ul>
+        <ul><button className='button' onClick={() => {Randomize}}>Randomize</button></ul>
       </li>
     </div>
   )

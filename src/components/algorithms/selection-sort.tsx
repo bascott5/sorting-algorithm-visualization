@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useContext } from "react";
+import { arrContext } from '../arr-context-provider';
+//import { highlightRef } from "../visualizer"
 
-export const SelectionSort = (arr: number[]) => {
-    console.log("selection algorithm");
+export const SelectionSort = () => {
+    const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
+    console.log("SelectionSort");
 
-    useEffect(() => {
-        for (let i = 0; i < arr.length; i++) {
-          setTimeout(() => {
+    for (let i = 0; i < arr.length; i++) {
+        setTimeout(() => {
+            setArr(arr => {
                 let minIndex = i;
                 for (let j = i + 1; j < arr.length; j++) {
                     if (arr[j] < arr[minIndex]) {
@@ -15,9 +18,10 @@ export const SelectionSort = (arr: number[]) => {
                 if (minIndex !== i) {
                     [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
                 }
+                //highlightRef.current[i].style.fill = "white";
 
                 return [...arr.slice()];
-          }, 100 * (i + 1));
-        }
-    }, []);
+            })
+        }, 100 * (i + 1))
+    }
 }
