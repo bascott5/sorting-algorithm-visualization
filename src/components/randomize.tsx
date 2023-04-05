@@ -1,18 +1,29 @@
-import { useContext } from "react";
-import { arrContext } from './arr-context-provider';
+import { useEffect, useContext } from "react";
+import Visualizer from "./visualizer"
+import { arrContext } from "./arr-context-provider";
 
-export const Randomize = () => {
+interface ArrProps {
+    arr: number[],
+    setArr: React.SetStateAction<number[]>
+}
+
+const Randomize: React.FC = () => {
     console.log("Randomize");
     const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
-    
-    setArr(arr => {
-        arr = [];
-        while (arr.length < 10) {
-            let rng = Math.floor(Math.random() * 10) + 1;
-            if (arr.indexOf(rng) === -1) {
-                arr.push(rng);
+    useEffect(() => {
+        setArr(arr => {
+            arr = [];
+            while (arr.length < 10) {
+                let rng = Math.floor(Math.random() * 10) + 1;
+                if (arr.indexOf(rng) === -1) {
+                    arr.push(rng);
+                }
             }
-        }
-        return [...arr.slice()];
-    });
+            return [...arr.slice()];
+        });
+    }, []);
+
+    return <Visualizer />
 }
+
+export default Randomize;
