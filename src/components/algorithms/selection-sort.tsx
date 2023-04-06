@@ -5,7 +5,7 @@ import Visualizer from '../visualizer';
 
 const SelectionSort: React.FC = () => {
     const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
-    console.log("SelectionSort");
+    console.log("Selection Sort");
 
     useEffect(() => {
         for (let i = 0; i < arr.length; i++) {
