@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { arrContext } from './arr-context-provider';
 import AlgorithmLoader from "./algorithm-loader"
 import Randomize from "./randomize";
@@ -10,6 +10,10 @@ interface ChildProps {
 const ControlPanel: React.FC = () => {
   const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
   const [algorithm, setAlgorithm] = useState("");
+  
+  useEffect(() => {
+    setArr(Randomize(arr));
+  }, [])
 
   return (
     <div>
