@@ -1,4 +1,4 @@
-import { useEffect , useContext } from "react";
+import { useEffect, useContext } from "react";
 import { arrContext } from '../arr-context-provider';
 import Visualizer from '../visualizer';
 //import { highlightRef } from "../visualizer"

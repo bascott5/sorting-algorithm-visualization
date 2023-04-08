@@ -23,10 +23,10 @@ const ControlPanel: React.FC = () => {
       <div className='headerContainer'>
         <h1 className='header'>🆂🅾🆁🆃🅸🅽🅶 🅰🅻🅶🅾🆁🅸🆃🅷🅼 🆅🅸🆂🆄🅰🅻🅸🆉🅴🆁</h1>
         <li className='list'>
-          <ul><button className='button'>Bubble Sort</button></ul>
-          <ul><button className='button'>Insertion Sort</button></ul>
-          <ul><button className='button'>Merge Sort</button></ul>
-          <ul><button className='button'>Quick Sort</button></ul>
+          <ul><button className='button' onClick={() => resetAlgorithm("bubble sort")}>Bubble Sort</button></ul>
+          <ul><button className='button' onClick={() => resetAlgorithm("insertion sort")}>Insertion Sort</button></ul>
+          <ul><button className='button' onClick={() => resetAlgorithm("merge sort")}>Merge Sort</button></ul>
+          <ul><button className='button' onClick={() => resetAlgorithm("quick sort")}>Quick Sort</button></ul>
           <ul><button className='button' onClick={() => resetAlgorithm("selection sort")}>Selection Sort</button></ul>
           <ul><button className='button' onClick={() => setArr(Randomize(arr))}>Randomize</button></ul>
         </li>

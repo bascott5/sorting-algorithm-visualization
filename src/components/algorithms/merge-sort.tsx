@@ -1,19 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { arrContext } from "../arr-context-provider";
 import Visualizer from "../visualizer";
 
 const MergeSort = () => {
+    const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
+    console.log("Merge Sort");
+
+    const merge = (left: any, right: any) => {
+        while (left.length && right.length) {
+            if (left[0] < right[0]) {
+                arr.push(left.shift())
+            }
+        }
+    }
+
     useEffect(() => {
         for (let i = 0; i < arr.length; i++) {
           setTimeout(() => {
             setArr(arr => {
-                let arrCopy: number[] = [...arr];
                 const mid = arr.length / 2;
                 if (arr.length < 2) {
-                    return arrCopy
+                    return [...arr.slice()];
                 }
 
-                const left = arrCopy.splice(0, mid);
-                return merge(MergeSort(left), MergeSort(arrCopy))
+                const left = arr.splice(0, mid);
+                return merge(MergeSort(left), MergeSort(arr))
             })
           }, 100 * (i + 1));
         }
@@ -22,11 +33,4 @@ const MergeSort = () => {
     return <Visualizer />
 }
 
-function merge(left: any, right: any) {
-    let arrCopy = [];
-    while (left.length && right.length) {
-        if (left[0] < right[0]) {
-            arrCopy.push(left.shift())
-        }
-    }
-}
+export default MergeSort;
