@@ -35,9 +35,7 @@ body {
 }
 
 .header {
-  color: black;
-  inline-size: 0vh;
-  display: inline-block;
+  padding: 5vh 0vh 5vh 0vh;
 }
 
 .bars {
