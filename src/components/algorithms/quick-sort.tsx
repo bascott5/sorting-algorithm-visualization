@@ -9,17 +9,45 @@ const QuickSort: React.FC = () => {
   useEffect(() => {
     for (let i = 0; i < arr.length; i++) {
       setTimeout(() => {
-        setArr(arr => {
-          if (arr.length <= 1) return arr;
-          let pivot = arr[0];
-          let left = arr.filter(x => x < pivot);
-          let right = arr.filter(x => x > pivot);
-
-          return [...left, pivot, ...right];
-        })
-      }, 100 * (i + 1));
+        quickSort(arr);
+      }, 100 * (i + 1))
     }
-  }, []);
+  })
+
+  const quickSort = (arr: number[], left = 0, right = arr.length - 1) => {
+    setArr(arr => {
+      if (left >= right) {
+        return [...arr.slice()];
+      }
+    
+      let pivotIndex = partition(arr, left, right);
+      quickSort(arr, left, pivotIndex - 1);
+      quickSort(arr, pivotIndex + 1, right);
+    
+      return [...arr.slice()];
+    });
+  }
+  
+  const partition = (arr: number[], left: any, right: any) => {
+    let pivotValue = arr[right];
+    let partitionIndex = left;
+  
+    for (let i = left; i < right; i++) {
+      if (arr[i] < pivotValue) {
+        swap(arr, i, partitionIndex);
+        partitionIndex++;
+      }
+    }
+  
+    swap(arr, right, partitionIndex);
+    return partitionIndex;
+  }
+  
+  const swap = (arr: number[], firstIndex: number, secondIndex: number) => {
+    let temp = arr[firstIndex];
+    arr[firstIndex] = arr[secondIndex];
+    arr[secondIndex] = temp;
+  }
 
   return <Visualizer />
 }
