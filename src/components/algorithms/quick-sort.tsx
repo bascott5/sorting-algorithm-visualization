@@ -7,25 +7,25 @@ const QuickSort: React.FC = () => {
   console.log("Quick Sort");
 
   useEffect(() => {
-    for (let i = 0; i < arr.length; i++) {
-      setTimeout(() => {
-        quickSort(arr);
-      }, 100 * (i + 1))
-    }
-  })
+    quickSort(arr);
+  });
 
   const quickSort = (arr: number[], left = 0, right = arr.length - 1) => {
-    setArr(arr => {
-      if (left >= right) {
-        return [...arr.slice()];
-      }
-    
-      let pivotIndex = partition(arr, left, right);
-      quickSort(arr, left, pivotIndex - 1);
-      quickSort(arr, pivotIndex + 1, right);
-    
-      return [...arr.slice()];
-    });
+    for (let i = 0; i < arr.length; i++) {
+      setTimeout(() => {
+        setArr(arr => {
+          if (left >= right) {
+            return [...arr.slice()];
+          }
+        
+          let pivotIndex = partition(arr, left, right);
+          quickSort(arr, left, pivotIndex - 1);
+          quickSort(arr, pivotIndex + 1, right);
+        
+          return [...arr.slice()];
+        });
+      }, 100 * (i + 1));
+    }
   }
   
   const partition = (arr: number[], left: any, right: any) => {
