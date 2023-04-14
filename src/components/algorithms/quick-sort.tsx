@@ -8,9 +8,10 @@ const QuickSort: React.FC = () => {
 
   useEffect(() => {
     quickSort(arr);
-  });
+  }, []);
 
   const quickSort = (arr: number[], left = 0, right = arr.length - 1) => {
+    console.log("quickSort")
     for (let i = 0; i < arr.length; i++) {
       setTimeout(() => {
         setArr(arr => {
@@ -28,7 +29,8 @@ const QuickSort: React.FC = () => {
     }
   }
   
-  const partition = (arr: number[], left: any, right: any) => {
+  const partition = (arr: number[], left: number, right: number) => {
+    console.log("partition")
     let pivotValue = arr[right];
     let partitionIndex = left;
   
@@ -44,6 +46,7 @@ const QuickSort: React.FC = () => {
   }
   
   const swap = (arr: number[], firstIndex: number, secondIndex: number) => {
+    console.log("swap")
     let temp = arr[firstIndex];
     arr[firstIndex] = arr[secondIndex];
     arr[secondIndex] = temp;

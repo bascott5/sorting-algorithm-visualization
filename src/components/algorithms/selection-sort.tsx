@@ -1,10 +1,10 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useRef } from "react";
 import { arrContext } from '../arr-context-provider';
 import Visualizer from '../visualizer';
-//import { highlightRef } from "../visualizer"
 
 const SelectionSort: React.FC = () => {
     const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
+    const highlightRef = useRef<React.MutableRefObject<any>>(null);
     console.log("Selection Sort");
 
     useEffect(() => {

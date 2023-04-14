@@ -14,7 +14,7 @@ const MergeSort = () => {
       }
     }, [])
 
-    const mergeSort: any = (arr: number[]) => {
+    const mergeSort = (arr: number[]) => {
       const mid = arr.length / 2;
 
       const left = arr.splice(0, mid);
