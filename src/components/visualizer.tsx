@@ -1,7 +1,7 @@
 import {useContext} from 'react'
 import { arrContext } from "./arr-context-provider";
 
-const Visualizer: React.FC<any> = (highlightRef: any) => {
+const Visualizer: React.FC = () => {
   const [arr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
 
   return arr.map<JSX.Element>((keys) => 
