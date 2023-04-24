@@ -8,11 +8,11 @@ const QuickSort: React.FC = () => {
   console.log("Quick Sort");
 
   useEffect(() => {
-    for (let i = 0; i < arr.length; i++) {
+    //for (let i = 0; i < arr.length; i++) {
       setTimeout(() => {
         return setArr(quickSort);
-      }, 100 * (i * 1));
-    }
+      }, 100);
+    //}
   }, []);
 
   const quickSort = (arr: number[], left = 0, right = arr.length - 1) => {

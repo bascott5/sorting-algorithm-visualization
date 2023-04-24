@@ -7,22 +7,63 @@ const MergeSort: React.FC = () => {
     console.log("Merge Sort");
 
     useEffect(() => {
-      for (let i = 0; i < arr.length; i++) {
+      for (let i = 1; i < arr.length; i *= 2) {
+        let arrCopy = [...arr.slice()];
         setTimeout(() => {
-          return setArr(mergeSort(arr));
+          setArr(arr => {
+            for (let left = 0; left + i < arr.length; left += i * 2) {
+              let right = left + i;
+              let rend = right + i;
+              if (rend > arr.length) {
+                rend = arr.length;
+              }
+              let m = left;
+              let k = left;
+              let j = right;
+              while (k < right && j < rend) {
+                if (arr[k] <= arr[j]) {
+                  arrCopy[m] = arr[k]; 
+                  k++;
+                } else {
+                  arrCopy[m] = arr[j];
+                  j++;
+                }
+                m++;
+              }
+              while (k < right) {
+                arrCopy[m] = arr[k];
+                k++;
+                m++;
+              }
+              while (j < rend) {
+                arrCopy[m] = arr[j];
+                j++;
+                m++;
+              }
+              for (m = left; m < rend; m++) {
+                arr[m] = arrCopy[m];
+              }
+
+              return [...arr.slice()];
+            }
+          });
         }, 100 * (i + 1));
       }
     }, []);
 
     const mergeSort = (arr: number[]) => {
-      const mid = arr.length / 2;
+      for (let i = 0; i < arr.length; i++) {
+        setTimeout(() => {
+          const mid: number = arr.length / 2;
 
-      if (arr.length < 2) {
-        return [...arr.slice()];
+          if (arr.length < 2) {
+            return [...arr.slice()];
+          }
+
+          const left: number[] = arr.splice(0, mid);
+          return merge(mergeSort(left), mergeSort(arr));
+        }, 100 * (i + 1));
       }
-
-      const left = arr.splice(0, mid);
-      return merge(mergeSort(left), mergeSort(arr));
     }
       
       const merge = (left: any, right: any) => {
@@ -34,7 +75,7 @@ const MergeSort: React.FC = () => {
           }
         }
   
-        return [...arr, ...left, ...right];
+        return [...arr.slice(), ...left.slice(), ...right.slice()];
       }
 
     return <Visualizer />
