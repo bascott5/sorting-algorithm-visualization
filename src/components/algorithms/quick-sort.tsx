@@ -1,4 +1,3 @@
-//TODO: Define functions inside setArr before returning the arr?
 import { useEffect, useContext } from "react";
 import { arrContext } from '../arr-context-provider';
 import Visualizer from "../visualizer";
@@ -8,11 +7,11 @@ const QuickSort: React.FC = () => {
   console.log("Quick Sort");
 
   useEffect(() => {
-    //for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       setTimeout(() => {
         return setArr(quickSort);
       }, 100);
-    //}
+    }
   }, []);
 
   const quickSort = (arr: number[], left = 0, right = arr.length - 1) => {
