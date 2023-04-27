@@ -1,21 +1,39 @@
-import React, { useContext } from 'react'
-import { arrContext, Action } from './arr-context-provider';
+import { useState, useEffect, useContext } from "react";
+import { arrContext } from './arr-context-provider';
+import AlgorithmLoader from "./algorithm-loader"
+import Randomize from "./randomize";
+import logo from "../logo.png"
 
 const ControlPanel: React.FC = () => {
-  const [arr, dispatch] = useContext<[number[], React.Dispatch<Action>]>(arrContext);
-    return (
+  const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
+  const [algorithm, setAlgorithm] = useState("");
+  
+  useEffect(() => {
+    setArr(Randomize(arr));
+  }, [])
+
+  const resetAlgorithm = (algorithm: string) => {
+    setAlgorithm(algorithm);
+      setTimeout(() => {
+        setAlgorithm("");
+      }, 1);
+  }
+
+  return (
+    <div>
       <div className='headerContainer'>
-        <h1 className='header'>🆂🅾🆁🆃🅸🅽🅶 🅰🅻🅶🅾🆁🅸🆃🅷🅼 🆅🅸🆂🆄🅰🅻🅸🆉🅴🆁</h1>
+        <img className='header' src={logo.src} height='115' width='293' alt='Logo'/>
         <li className='list'>
-            <ul><button className='button' onClick={() => dispatch({ type: "bubble sort" })}>Bubble Sort</button></ul>
-            <ul><button className='button' onClick={() => dispatch({ type: "insertion sort" })}>Insertion Sort</button></ul>
-            <ul><button className='button' onClick={() => dispatch({ type: "merge sort" })}>Merge Sort</button></ul>
-            <ul><button className='button' onClick={() => dispatch({ type: "quick sort" })}>Quick Sort</button></ul>
-            <ul><button className='button' onClick={() => dispatch({ type: "selection sort" })}>Selection Sort</button></ul>
-            <ul><button className='button' onClick={() => dispatch({ type: "randomize" })}>Randomize</button></ul>
+          <ul><button className='button' onClick={() => resetAlgorithm("bubble sort")}>Bubble Sort</button></ul>
+          <ul><button className='button' onClick={() => resetAlgorithm("insertion sort")}>Insertion Sort</button></ul>
+          <ul><button className='button' onClick={() => resetAlgorithm("quick sort")}>Quick Sort</button></ul>
+          <ul><button className='button' onClick={() => resetAlgorithm("selection sort")}>Selection Sort</button></ul>
+          <ul><button className='button' onClick={() => setArr(Randomize(arr))}>Randomize</button></ul>
         </li>
       </div>
-    )
-  }
+      <AlgorithmLoader algorithm={algorithm} />
+    </div>
+  )
+}
   
-  export default ControlPanel;
+export default ControlPanel;

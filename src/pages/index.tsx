@@ -1,17 +1,13 @@
-import React from 'react'
-import ControlPanel from '@/components/control-panel';
 import ArrContextProvider from '@/components/arr-context-provider';
-import Visualizer from '@/components/visualizer';
-
+import ControlPanel from '@/components/control-panel';
 
 const App: React.FC = () => {
     return ( 
-        <ArrContextProvider>
-            <div>
+        <div>
+            <ArrContextProvider>
                 <ControlPanel />
-                <Visualizer />
-            </div>
-        </ArrContextProvider>
+            </ArrContextProvider>
+        </div>
     )
 }
 

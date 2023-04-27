@@ -1,20 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { arrContext } from '../arr-context-provider';
 import Visualizer from "../visualizer";
 
-const BubbleSort = () => {
+const BubbleSort: React.FC = () => {
+    const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
+    console.log("Bubble Sort");
+
     useEffect(() => {
         for (let i = 0; i < arr.length; i++) {
           setTimeout(() => {
             setArr(arr => {
-                let arrCopy: number[] = [...arr];
                 for (let j= 0; j < arr.length - i - 1; j++) {
-                    if (arrCopy[j] > arrCopy[j + 1]) {
-                        let temp = arrCopy[j];
-                        arrCopy[j] = arrCopy[j + 1];
-                        arrCopy[j + 1] = temp;
+                    if (arr[j] > arr[j + 1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
                     }
                 }
-                return arrCopy;
+                return [...arr.slice()];
             })
           }, 100 * (i + 1));
         }
@@ -22,3 +25,5 @@ const BubbleSort = () => {
 
     return <Visualizer />
 }
+
+export default BubbleSort;
