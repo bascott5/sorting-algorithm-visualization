@@ -14,8 +14,6 @@ const AlgorithmLoader: React.FC<AlgorithmProps> = ({ algorithm }: AlgorithmProps
             return <BubbleSort />
         case "insertion sort":
             return <InsertionSort />
-        case "quick sort":
-            return <QuickSort />
         case "selection sort":
             return <SelectionSort />
         default:
