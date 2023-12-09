@@ -1,6 +1,10 @@
+//TODO: use a generator function to make the algorithm yield after every pass // https://hinsxd.dev/blog/sorting-visualizer#result-2---demo-using-svg
 import { useEffect, useContext } from "react";
 import { arrContext } from "../arr-context-provider";
 import Visualizer from "../visualizer";
+
+type Merge = (arr1: number[], arr2: number[]) => number[];
+type MergeSort = (arr: number[]) => number[];
 
 const MergeSort: React.FC = () => {
     const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
@@ -10,36 +14,25 @@ const MergeSort: React.FC = () => {
       mergeSort(arr);
     }, []);
 
-    const mergeSort = (arr: number[]) => {
-      for (let i = 0; i < arr.length; i++) {
-        setTimeout(() => {
-          setArr(arr => {
-            const mid: number = arr.length / 2;
+    const mergeSort: MergeSort = (arr: number[]) => {
+      if (arr.length <= 1) return arr;
+      let mid = Math.floor(arr.length / 2)
+      let left: number[] = mergeSort(arr.slice(0, mid))
+      let right: number[] = mergeSort(arr.slice(mid));
 
-            if (arr.length < 2) {
-              return [...arr.slice()];
-            }
-
-            const left: number[] = arr.splice(0, mid);
-            merge(mergeSort(left), mergeSort(arr));
-
-            return [...arr.slice()];
-          })
-        }, 100 * (i + 1));
-      }
+      return merge(left, right); 
     }
       
-      const merge = (left: any, right: any) => {
-          while (left.length && right.length) {
-            if (left[0] < right[0]) {
-              arr.push(left.shift());
-            } else {
-              arr.push(right.shift());
-            }
-          }
+    const merge: Merge = (arr1: number[], arr2: number[]) => {
+      let sorted: number[] = [];
 
-          return [...arr.slice(), ...left.slice(), ...right.slice()];
-      }
+      while (arr1.length && arr2.length) {
+        if (arr1[0] < arr2[0]) sorted.push(arr1.shift() as number);
+        else sorted.push(arr2.shift() as number);
+      };
+
+      return sorted.concat(arr1.slice().concat(arr2.slice()));
+    }
 
     return <Visualizer />
 }
