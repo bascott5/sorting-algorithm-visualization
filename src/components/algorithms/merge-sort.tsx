@@ -11,7 +11,7 @@ const MergeSort: React.FC = () => {
     console.log("Merge Sort");
 
     useEffect(() => {
-      mergeSort(arr);
+      setArr(mergeSort(arr));
     }, []);
 
     const mergeSort: MergeSort = (arr: number[]) => {
