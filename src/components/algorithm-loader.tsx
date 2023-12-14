@@ -10,6 +10,7 @@ interface AlgorithmProps {
 }
 
 const AlgorithmLoader: React.FC<AlgorithmProps> = ({ algorithm }: AlgorithmProps) => {
+
     switch(algorithm) {
         case "bubble sort":
             return <BubbleSort />
@@ -19,6 +20,8 @@ const AlgorithmLoader: React.FC<AlgorithmProps> = ({ algorithm }: AlgorithmProps
             return <SelectionSort />
         case "merge sort":
             return <MergeSort />
+        case "quick sort":
+            return <QuickSort />
         default:
             return <Visualizer />
     }

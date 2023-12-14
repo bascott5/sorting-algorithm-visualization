@@ -7,47 +7,51 @@ const QuickSort: React.FC = () => {
   console.log("Quick Sort");
 
   useEffect(() => {
-    for (let i = 0; i < arr.length; i++) {
+    let j = 0;
+    for (let i of quickSort(arr)) {
+      if (arr == arr.sort()) break;
+
       setTimeout(() => {
-        return setArr(quickSort);
-      }, 100);
+        setArr(i);
+      }, 1000 * (j + 1));
+      j++;
     }
   }, []);
 
-  const quickSort = (arr: number[], left = 0, right = arr.length - 1) => {
-    console.log("quickSort")
+  function* quickSort(arr: number[], left = 0, right = arr.length - 1): Generator<number[], number[]> {
     if (left >= right) {
       return [...arr.slice()];
     }
         
-    let pivotIndex = partition(arr, left, right);
-    quickSort(arr, left, pivotIndex - 1);
-    quickSort(arr, pivotIndex + 1, right);
-        
+    let pivotIndex = yield* partition(arr, left, right);
+    yield* quickSort(arr, left, pivotIndex - 1);
+    yield* quickSort(arr, pivotIndex + 1, right);
+
     return [...arr.slice()];
   }
   
-  const partition = (arr: number[], left: number, right: number) => {
-    console.log("partition")
+  function* partition(arr: number[], left: number, right: number): Generator<number[]> {
     let pivotValue = arr[right];
     let partitionIndex = left;
   
     for (let i = left; i < right; i++) {
+      yield [...arr.slice()];
       if (arr[i] < pivotValue) {
-        swap(arr, i, partitionIndex);
+        yield* swap(arr, i, partitionIndex);
         partitionIndex++;
       }
     }
   
-    swap(arr, right, partitionIndex);
+    yield* swap(arr, right, partitionIndex);
     return partitionIndex;
   }
   
-  const swap = (arr: number[], firstIndex: number, secondIndex: number) => {
-    console.log("swap")
+  function* swap(arr: number[], firstIndex: number, secondIndex: number): Generator<number[]> {
     let temp = arr[firstIndex];
     arr[firstIndex] = arr[secondIndex];
     arr[secondIndex] = temp;
+
+    yield [...arr.slice()];
   }
 
   return <Visualizer />
