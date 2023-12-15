@@ -1,6 +1,3 @@
-//TODO: use a generator function to make the algorithm yield after every pass // https://hinsxd.dev/blog/sorting-visualizer#result-2---demo-using-svg
-//try this one out?? https://www.geeksforgeeks.org/javascript-program-for-merge-sort/
-
 import { useEffect, useContext } from "react";
 import { arrContext } from "../arr-context-provider";
 import Visualizer from "../visualizer";
@@ -15,21 +12,15 @@ const MergeSort: React.FC = () => {
         steps.splice(-1, 0, i);
       }
 
-      for (let i = 0; i < steps.length - 123; i++) {
-        setTimeout(() => {
-          setArr(steps[i]);
-        }, 50 * (i))
+      for (let i = 0; i < steps.length - 1; i++) {
+        if (steps[i].toString() != arr.sort().toString()) {
+          setTimeout(() => {
+            setArr(steps[i]);
+          }, 50 * (i))
+        } else {
+          break;
+        }
       }
-
-      /*let j = 0;
-      for (let i of mergeSort(arr)) {
-        setSteps(i)
-        /*setTimeout(() => {
-          setArr(i);
-        }, 1000 * (j + 1));
-        j++;
-      }
-      console.log(steps)*/
     }, []);
 
     function* merge(arr: number[], left: number, middle: number, right: number): Generator<number[]> { 

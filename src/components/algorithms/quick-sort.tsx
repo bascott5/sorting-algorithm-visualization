@@ -4,17 +4,22 @@ import Visualizer from "../visualizer";
 
 const QuickSort: React.FC = () => {
   const [arr, setArr] = useContext<[number[], React.Dispatch<React.SetStateAction<number[]>>]>(arrContext);
+  let steps: number[][] = [];
   console.log("Quick Sort");
 
   useEffect(() => {
-    let j = 0;
     for (let i of quickSort(arr)) {
-      if (arr == arr.sort()) break;
+      steps.splice(-1, 0, i);
+    }
 
-      setTimeout(() => {
-        setArr(i);
-      }, 1000 * (j + 1));
-      j++;
+    for (let i = 0; i < steps.length - 1; i++) {
+      if (steps[i].toString() != arr.sort().toString()) {
+        setTimeout(() => {
+          setArr(steps[i]);
+        }, 50 * (i))
+      } else {
+        break;
+      }
     }
   }, []);
 
@@ -35,7 +40,7 @@ const QuickSort: React.FC = () => {
     let partitionIndex = left;
   
     for (let i = left; i < right; i++) {
-      yield [...arr.slice()];
+      //yield [...arr.slice()];
       if (arr[i] < pivotValue) {
         yield* swap(arr, i, partitionIndex);
         partitionIndex++;
