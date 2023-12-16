@@ -18,7 +18,7 @@ const BubbleSort: React.FC = () => {
                     }
                 }
                 return [...arr.slice()];
-            })
+            });
           }, 100 * (i + 1));
         }
     }, []);
