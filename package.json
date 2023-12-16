@@ -2,7 +2,6 @@
   "name": "sorting-algorithm-visualization",
   "version": "1.0.0",
   "private": true,
-  "engines": { "node": "v20.5.0" },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
