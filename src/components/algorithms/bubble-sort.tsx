@@ -7,7 +7,7 @@ const BubbleSort: React.FC = () => {
     console.log("Bubble Sort");
 
     useEffect(() => {
-        for (let i = 0; i < arr.length - 15; i++) {
+        for (let i = 0; i < arr.length; i++) {
           setTimeout(() => {
             setArr(arr => {
                 for (let j= 0; j < arr.length - i - 1; j++) {
