@@ -23,7 +23,7 @@ const SelectionSort: React.FC = () => {
                     //highlightRef.current[i].style.fill = "white";
     
                     return [...arr.slice()];
-                })
+                });
             }, 100 * (i + 1))
         }
     }, []);

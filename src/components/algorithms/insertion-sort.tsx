@@ -19,7 +19,7 @@ const InsertionSort: React.FC = () => {
           arr[j + 1] = current;
 
           return [...arr.slice()];
-        })
+        });
       }, 100 * (i + 1));
     }
   }, []);
